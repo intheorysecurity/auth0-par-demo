@@ -4,15 +4,26 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    console.log(req.oidc.config);
     if (req.oidc.isAuthenticated() && !req.oidc.accessToken.isExpired()) {
-      res.send({
+      // res.send({
+      //   isAuthN: req.oidc.isAuthenticated(),
+      //   accessToken: req.oidc.accessToken.access_token,
+      //   idToken: req.oidc.idToken,
+      // });
+      res.render("pages/index", {
+        isAuthN: req.oidc.isAuthenticated(),
         accessToken: req.oidc.accessToken.access_token,
         idToken: req.oidc.idToken,
+        user: req.oidc.user
       });
     } else {
       //currently redirect to the login page
-      res.redirect("/login");
+      res.render("pages/index", {
+        isAuthN: false,
+        accessToken: null,
+        idToken: null,
+        user: null
+      });
     }
   } catch (e) {
     console.error(e);
@@ -20,5 +31,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-
-module.exports = router
+module.exports = router;
