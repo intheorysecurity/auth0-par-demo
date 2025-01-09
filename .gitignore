@@ -1,0 +1,13 @@
+node_modules/
+.terraform/
+certs/
+*.tfvars
+*.tfvars.json
+*.lock.hcl
+*.tfstate
+*.tfstate.backup
+.env
+.DS_Store
+package-lock.json
+todo
+Notes-Steps
