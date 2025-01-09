@@ -17,7 +17,39 @@ Before setting up the demo, ensure you have the following:
 - **Create a Regular Web App** in Auth0: Follow the instructions for creating a regular web app on Auth0's platform [here](https://auth0.com/docs/get-started/auth0-overview/create-applications/regular-web-apps).
 - **Node.js v20.15.0+** and **npm v10.9.1+** installed.
 
-## Demo Setup Steps
+### Creating and Configure Auth0 Application
+
+Before running the demo application, you'll need to configure the **Allowed Callback URL** and **Allowed Logout URLs** in your Auth0 application settings. These URLs ensure that your application can properly handle the authentication flow and user logout.
+
+1. **Login to Auth0 Dashboard**: Go to [Auth0 Dashboard](https://manage.auth0.com) and log in.
+
+2. **Navigate to your Application**:
+   - In the left sidebar, click on **Applications** > **Applications**.
+   - Select the **Regular Web App** you created in the previous step.
+
+3. **Set Allowed Callback URLs**:
+   - Under the **Settings** tab, find the **Allowed Callback URLs** field.
+   - Add `http://localhost:3000/callback` to this field. This URL is where Auth0 will redirect users after authentication.
+   
+
+4. **Set Allowed Logout URLs**:
+   - In the same **Settings** tab, find the **Allowed Logout URLs** field.
+   - Add `http://localhost:3000` to this field. This URL is where users will be redirected after logging out of the app.
+   
+
+5. **Save Changes**:
+   - Scroll down and click the **Save Changes** button to apply these settings.
+
+6. **Copy the Domain, Client ID, and Client Secret**:
+   - After saving, stay in the **Settings** tab.
+   - Copy the following details from the **Client ID** and **Client Secret** fields:
+     - **Client ID**
+     - **Client Secret**
+     - **Domain**
+
+   These values will be required to configure your local `.env` file and allow the demo app to communicate with Auth0.
+
+## Demo Application Setup Steps
 
 ### 1. Clone the repository
 Clone this repository to your local machine using the following command:
